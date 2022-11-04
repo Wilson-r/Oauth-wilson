@@ -1,0 +1,38 @@
+<div *ngIf="album">
+  <div class="jumbotron bg-secondary text-center">
+    <div *ngIf="album?.images?.length > 0">
+      <img class="album-thumb" src="{{ album.images[0].url }}" />
+    </div>
+    <h1 *ngIf="album?.artists?.length > 0" class="my-3">
+      {{ (album?.artists)[0].name }}
+    </h1>
+    <h1 class="my-3 display-3">{{ album.name }}</h1>
+    <h5 class="lead">Release date: {{ album.release_date }}</h5>
+    <a
+      class="btn btn-info mt-2"
+      target="_blank"
+      href="{{ album?.external_urls?.spotify }}"
+      >View In Spotify</a
+    >
+  </div>
+
+  <div>
+    <h2>Album Tracks</h2>
+    <div *ngFor="let track of album?.tracks?.items">
+      <div class="card bg-secondary my-1 text-center">
+        <div class="card-body">
+          <h5 class="card-title">
+            {{ track.track_number }} - {{ track.name }}
+          </h5>
+          <a
+            *ngIf="track.preview_url"
+            class="font-weight-bold text-info"
+            href="{{ track.preview_url }}"
+            target="_blank"
+            >Preview Track</a
+          >
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

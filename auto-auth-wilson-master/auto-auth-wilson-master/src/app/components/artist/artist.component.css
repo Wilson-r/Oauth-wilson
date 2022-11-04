@@ -1,0 +1,13 @@
+.jumbotron div img {
+  max-width: 80%;
+}
+
+@media (max-width: 410px) {
+  .jumbotron h1 {
+    font-size: 3.7rem;
+  }
+
+  .jumbotron p {
+    font-size: 1rem;
+  }
+}

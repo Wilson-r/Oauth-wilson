@@ -1,0 +1,40 @@
+<div *ngIf="artist">
+  <div class="jumbotron bg-secondary text-center">
+    <div *ngIf="artist?.images?.length > 0">
+      <img class="rounded-circle border" src="{{ artist.images[0].url }}" />
+    </div>
+    <h1 class="display-2 my-4">{{ artist.name }}</h1>
+    <p class="lead" *ngIf="artist?.genres?.length > 0">
+      Genres:
+      <span
+        *ngFor="let genre of artist.genres"
+        class="badge badge-pill badge-info mx-1"
+        >{{ genre }}</span
+      >
+    </p>
+  </div>
+
+  <div>
+    <div class="row">
+      <div
+        *ngFor="let album of albums"
+        class="col-lg-3 col-md-4 col-sm-6 bg-secondary text-light card p-2"
+      >
+        <div>
+          <div *ngIf="album?.images?.length > 0">
+            <img class="card-img-top" src="{{ album.images[0].url }}" />
+            <div class="card-body">
+              <h5>{{ album.name }}</h5>
+            </div>
+
+            <a
+              class="btn btn-info btn-block"
+              [routerLink]="['/album', album.id]"
+              >Album Details</a
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,37 @@
+<h1>Need Music?</h1>
+<p class="lead">
+  Use Music Finder to browse new releases and find your favorite songs
+</p>
+<form class="border-bottom mb-3">
+  <div class="form-group">
+    <input
+      type="text"
+      class="form-control"
+      placeholder="Search for artists..."
+      name="searchTerm"
+      [(ngModel)]="searchTerm"
+      (keyup)="searchMusic()"
+    />
+  </div>
+</form>
+
+<div *ngIf="artists">
+  <div *ngFor="let artist of artists">
+    <div class="card bg-secondary my-1">
+      <div class="card-body">
+        <h5 class="card-title">
+          <a class="text-light" [routerLink]="['/artist', artist.id]">{{
+            artist.name
+          }}</a>
+        </h5>
+        <p *ngIf="artist.genres.length > 0" class="card-text">
+          <span
+            *ngFor="let genre of artist.genres"
+            class="badge badge-pill badge-info mx-1"
+            >{{ genre }}</span
+          >
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
